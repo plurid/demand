@@ -31,4 +31,5 @@ export const StyledTopBarAdd: any = styled.div`
     display: grid;
     place-content: center;
     width: 40px;
+    z-index: 99999;
 `;
