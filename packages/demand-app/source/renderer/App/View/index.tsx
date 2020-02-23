@@ -10,7 +10,13 @@ const View: React.FC<any> = () => {
         <div>
             <TopBar />
 
-            <Pluriverse />
+            <div
+                style={{
+                    zIndex: 8888,
+                }}
+            >
+                <Pluriverse />
+            </div>
         </div>
     );
 }

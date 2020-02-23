@@ -29,9 +29,17 @@ const PluriverseItem: React.FC<PluriverseItemProperties> = (
         pluriverse,
     } = properties;
 
+
+    /** handlers */
+    const handleClick = () => {
+        console.log('click');
+    }
+
+    /** render */
     return (
         <StyledPluriverseItem
             theme={theme}
+            atClick={handleClick}
         >
             {pluriverse.id}
         </StyledPluriverseItem>
