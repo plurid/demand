@@ -10,7 +10,7 @@ export const StyledTopBar: any = styled.div`
     left: 0;
     right: 0;
     height: 40px;
-    z-index: 9999;
+    z-index: 99999;
 
     padding-left: 80px;
     display: flex;
@@ -22,4 +22,11 @@ export const StyledTopBar: any = styled.div`
         }
         return 'transparent';
     }};
+`;
+
+
+export const StyledTopBarAdd: any = styled.div`
+    display: grid;
+    place-content: center;
+    width: 40px;
 `;
