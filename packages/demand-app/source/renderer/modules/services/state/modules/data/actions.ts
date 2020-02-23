@@ -14,3 +14,13 @@ export const addPluriverse = (
         payload,
     };
 }
+
+
+export const setActivePluriverse = (
+    payload: string,
+): Types.DataSetActivePluriverseAction => {
+    return {
+        type: Types.DATA_SET_ACTIVE_PLURIVERSE,
+        payload,
+    };
+}
