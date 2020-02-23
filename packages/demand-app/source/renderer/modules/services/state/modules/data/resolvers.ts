@@ -2,14 +2,28 @@ import * as Types from './types';
 
 
 
-export const setDocuments = (
+export const addPluriverse = (
     state: Types.State,
-    action: Types.DataSetDocumentsAction,
+    action: Types.DataAddPluriverseAction,
 ): Types.State => {
-    return {
+    const updatedState = {
         ...state,
-        documents: {
-            ...action.payload,
+    };
+
+    const pluriverse = action.payload;
+
+    const updatedPluriverse = {
+        ...state.pluriverses,
+    }
+
+    updatedPluriverse[pluriverse.id] = {
+        ...pluriverse,
+    };
+
+    return {
+        ...updatedState,
+        pluriverses: {
+            ...updatedPluriverse,
         },
     };
 }

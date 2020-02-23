@@ -1,17 +1,16 @@
 import {
-    Indexed,
-    PluridInternalStateDocument,
-} from '@plurid/plurid-data';
+    TerminalPluriverse,
+} from '../../../../data/interfaces';
 
 import * as Types from './types';
 
 
 
-export const setDocuments = (
-    payload: Indexed<PluridInternalStateDocument>,
-): Types.DataSetDocumentsAction => {
+export const addPluriverse = (
+    payload: TerminalPluriverse,
+): Types.DataAddPluriverseAction => {
     return {
-        type: Types.DATA_SET_DOCUMENTS,
+        type: Types.DATA_ADD_PLURIVERSE,
         payload,
     };
 }

@@ -1,21 +1,24 @@
 import {
     Indexed,
-    PluridInternalStateDocument,
 } from '@plurid/plurid-data';
 
+import {
+    TerminalPluriverse,
+} from '../../../../data/interfaces';
 
 
-export const DATA_SET_DOCUMENTS = 'DATA_SET_DOCUMENTS';
-export interface DataSetDocumentsAction {
-    type: typeof DATA_SET_DOCUMENTS;
-    payload: Indexed<PluridInternalStateDocument>;
+
+export const DATA_ADD_PLURIVERSE = 'DATA_ADD_PLURIVERSE';
+export interface DataAddPluriverseAction {
+    type: typeof DATA_ADD_PLURIVERSE;
+    payload: TerminalPluriverse;
 }
 
 
 
 export interface State {
-    documents: Indexed<PluridInternalStateDocument>;
+    pluriverses: Indexed<TerminalPluriverse>;
 }
 
 
-export type Actions = DataSetDocumentsAction;
+export type Actions = DataAddPluriverseAction;
