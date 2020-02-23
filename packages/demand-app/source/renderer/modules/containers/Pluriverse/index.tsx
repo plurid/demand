@@ -7,6 +7,7 @@ import PluridApp, {
     SPACE_LAYOUT,
 } from '@plurid/plurid-react';
 
+import Command from '../../components/Command';
 import Terminal from '../../components/Terminal';
 
 
@@ -14,10 +15,17 @@ import Terminal from '../../components/Terminal';
 const Pluriverse: React.FC<any> = () => {
     const pluridPages: PluridPage[] = [
         {
-            id: 'one',
-            path: '/foo',
+            id: 'terminal1',
+            path: '/terminal-1',
             component: {
                 element: () => <Terminal />,
+            },
+        },
+        {
+            id: 'command',
+            path: '/command',
+            component: {
+                element: () => <Command />,
             },
         },
     ];
@@ -40,7 +48,8 @@ const Pluriverse: React.FC<any> = () => {
     };
 
     const pluridView = [
-        '/foo',
+        '/terminal-1',
+        '/command',
     ];
 
 
