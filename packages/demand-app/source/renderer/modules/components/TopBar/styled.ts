@@ -11,6 +11,11 @@ export const StyledTopBar: any = styled.div`
     right: 0;
     height: 40px;
     z-index: 9999;
+
+    padding-left: 80px;
+    display: flex;
+    flex-direction: row;
+
     background-color: ${(props: any) => {
         if (props.mouseOver) {
             return props.theme.backgroundColorDark;
