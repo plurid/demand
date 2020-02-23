@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 
 export const StyledTerminal: any = styled.div`
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Inconsolata', 'Courier New', Courier, monospace;
     min-height: 400px;
     padding: 2rem;
 `;
