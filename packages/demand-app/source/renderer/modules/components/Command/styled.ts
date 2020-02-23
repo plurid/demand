@@ -9,6 +9,7 @@ export const StyledCommand = styled.div`
     align-items: center;
     grid-template-columns: 2rem auto;
     font-family: 'Inconsolata', 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
 `;
 
 
