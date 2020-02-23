@@ -8,6 +8,7 @@ export const StyledPluriverseItem: any = styled.div`
     display: grid;
     place-content: center;
     cursor: pointer;
+    user-select: none;
 
     border-left: 1px solid ${(props: any) => {
         return props.theme.backgroundColorPrimaryAlpha;

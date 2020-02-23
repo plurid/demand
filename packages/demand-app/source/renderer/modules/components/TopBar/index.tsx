@@ -5,7 +5,12 @@ import React, {
 import themes from '@plurid/plurid-themes';
 
 import {
+    PluridIconAdd,
+} from '@plurid/plurid-icons-react';
+
+import {
     StyledTopBar,
+    StyledTopBarAdd,
 } from './styled';
 
 import PluriverseItem from './components/PluriverseItem';
@@ -34,9 +39,13 @@ const terminalPluriverses: IndexedTerminalPluriverse = {
 
 const theme = themes.plurid;
 
-const TopBar: React.FC<any> = () => {
+const TopBar: React.FC<any> = (
+) => {
+    /** state */
     const [mouseOver, setMouseOver] = useState(false);
 
+
+    /** render */
     return (
         <StyledTopBar
             onMouseEnter={() => setMouseOver(true)}
@@ -56,6 +65,13 @@ const TopBar: React.FC<any> = () => {
                             />
                         );
                     })}
+
+                    <StyledTopBarAdd>
+                        <PluridIconAdd
+                            size="small"
+                            atClick={() => {}}
+                        />
+                    </StyledTopBarAdd>
                 </>
             )}
         </StyledTopBar>
