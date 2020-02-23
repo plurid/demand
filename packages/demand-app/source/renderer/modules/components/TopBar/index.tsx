@@ -54,7 +54,7 @@ const TopBar: React.FC<any> = (
             mouseOver={mouseOver}
             theme={theme}
         >
-            {mouseOver && (
+            {/* {mouseOver && ( */}
                 <>
                     {Object.values(terminalPluriverses).map(pluriverse => {
                         return (
@@ -73,7 +73,7 @@ const TopBar: React.FC<any> = (
                         />
                     </StyledTopBarAdd>
                 </>
-            )}
+            {/* )} */}
         </StyledTopBar>
     );
 }

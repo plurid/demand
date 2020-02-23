@@ -15,6 +15,8 @@ export const StyledTopBar: any = styled.div`
     padding-left: 80px;
     display: flex;
     flex-direction: row;
+    user-select: all;
+    pointer-events: all;
 
     background-color: ${(props: any) => {
         if (props.mouseOver) {
