@@ -118,7 +118,6 @@ const TopBar: React.FC<TopBarProperties> = (
                         return (
                             <PluriverseItem
                                 key={id}
-                                theme={stateGeneralTheme}
                                 pluriverse={pluriverse}
                                 active={stateActivePluriverse === id}
                             />

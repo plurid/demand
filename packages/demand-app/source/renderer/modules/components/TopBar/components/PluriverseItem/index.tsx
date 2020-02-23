@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { AnyAction } from 'redux';
+import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+
 import {
     Theme,
 } from '@plurid/plurid-themes';
@@ -16,13 +20,29 @@ import {
     TerminalPluriverse,
 } from '../../../../data/interfaces';
 
+import { AppState } from '../../../../services/state/store';
+import selectors from '../../../../services/state/selectors';
+import actions from '../../../../services/state/actions';
 
 
-interface PluriverseItemProperties {
-    theme: Theme;
+
+interface PluriverseItemOwnProperties {
     pluriverse: TerminalPluriverse;
     active: boolean;
 }
+
+interface PluriverseItemStateProperties {
+    stateGeneralTheme: Theme;
+    stateInteractionTheme: Theme;
+}
+
+interface PluriverseItemDispatchProperties {
+    dispatchDataSetActivePluriverse: typeof actions.data.setActivePluriverse;
+}
+
+type PluriverseItemProperties = PluriverseItemOwnProperties
+    & PluriverseItemStateProperties
+    & PluriverseItemDispatchProperties;
 
 const PluriverseItem: React.FC<PluriverseItemProperties> = (
     properties,
@@ -30,21 +50,28 @@ const PluriverseItem: React.FC<PluriverseItemProperties> = (
     /** properties */
     const {
         /** own */
-        theme,
         pluriverse,
         active,
+
+        // /** state */
+        stateGeneralTheme,
+        // stateInteractionTheme,
+
+        /** dispatch */
+        dispatchDataSetActivePluriverse,
     } = properties;
 
 
     /** handlers */
     const handleClick = () => {
-        console.log('click');
+        dispatchDataSetActivePluriverse(pluriverse.id);
     }
+
 
     /** render */
     return (
         <StyledPluriverseItem
-            theme={theme}
+            theme={stateGeneralTheme}
             active={active}
             atClick={handleClick}
         >
@@ -56,4 +83,26 @@ const PluriverseItem: React.FC<PluriverseItemProperties> = (
 }
 
 
-export default PluriverseItem;
+const mapStateToProperties = (
+    state: AppState,
+): PluriverseItemStateProperties => ({
+    stateGeneralTheme: selectors.themes.getGeneralTheme(state),
+    stateInteractionTheme: selectors.themes.getInteractionTheme(state),
+});
+
+
+const mapDispatchToProperties = (
+    dispatch: ThunkDispatch<{}, {}, AnyAction>,
+): PluriverseItemDispatchProperties => ({
+    dispatchDataSetActivePluriverse: (
+        pluriverseID,
+    ) => dispatch(
+        actions.data.setActivePluriverse(pluriverseID),
+    ),
+});
+
+
+export default connect(
+    mapStateToProperties,
+    mapDispatchToProperties,
+)(PluriverseItem);
