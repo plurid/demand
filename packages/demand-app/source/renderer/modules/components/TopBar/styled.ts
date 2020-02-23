@@ -6,7 +6,7 @@ export const StyledTopBar: any = styled.div`
     -webkit-app-region: drag;
 
     position: absolute;
-    top: 0;
+    top: 30px;
     left: 0;
     right: 0;
     height: 40px;
@@ -29,5 +29,4 @@ export const StyledTopBarAdd: any = styled.div`
     display: grid;
     place-content: center;
     width: 40px;
-    z-index: 99999;
 `;

@@ -10,7 +10,7 @@ const View: React.FC<any> = () => {
         <div>
             <TopBar />
 
-            {/* <Pluriverse /> */}
+            <Pluriverse />
         </div>
     );
 }
