@@ -20,9 +20,9 @@
         "build": "yarn clean && webpack --config ./scripts/webpack.config.js -p --env prod --progress --profile --colors",
         "electron": "electron ./build/",
         "electron.run": "yarn develop && yarn electron",
-        "electron.linux": "yarn build && electron-packager ./build/ den --overwrite --asar=true --platform=linux --arch=x64 --icon=./build/assets/meta/den.png --prune=true --out=den",
-        "electron.mac": "yarn build && electron-packager ./build/ --overwrite --platform=darwin --arch=x64 --icon=./build/assets/meta/den.icns --prune=true --out=den",
-        "electron.windows": "yarn build && electron-packager ./build/ den --overwrite --asar=true --platform=win32 --arch=ia32 --icon=./build/assets/meta/den.ico --prune=true --out=den --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"den\""
+        "electron.linux": "yarn build && electron-packager ./build/ demand --overwrite --asar=true --platform=linux --arch=x64 --icon=./build/assets/meta/demand.png --prune=true --out=demand",
+        "electron.mac": "yarn build && electron-packager ./build/ --overwrite --platform=darwin --arch=x64 --icon=./build/assets/meta/demand.icns --prune=true --out=demand",
+        "electron.windows": "yarn build && electron-packager ./build/ demand --overwrite --asar=true --platform=win32 --arch=ia32 --icon=./build/assets/meta/demand.ico --prune=true --out=demand --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"demand\""
     },
     "devDependencies": {
         "@types/jest": "^25.1.3",
