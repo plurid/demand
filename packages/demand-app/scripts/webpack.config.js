@@ -32,11 +32,19 @@ module.exports = [
         resolve: {
             extensions: [".ts", ".tsx", ".js", ".jsx"]
         },
-        module: { rules: [{
-            test: /\.ts(x?)$/,
-            include: /source/,
-            use: [{ loader: 'ts-loader' }]
-        }] },
+        module: {
+            rules: [
+                {
+                    test: /\.ts(x?)$/,
+                    include: /source/,
+                    use: [{ loader: 'ts-loader' }]
+                },
+                {
+                    test: /\.css$/i,
+                    use: ['style-loader', 'css-loader'],
+                },
+            ],
+        },
         output: {
             path: path.join(__dirname, '../build'),
             filename: 'renderer.js'
