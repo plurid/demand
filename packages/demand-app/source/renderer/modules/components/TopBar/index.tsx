@@ -15,6 +15,10 @@ import {
 } from '@plurid/plurid-icons-react';
 
 import {
+    uuidv4 as uuid,
+} from '@plurid/plurid-functions';
+
+import {
     StyledTopBar,
     StyledTopBarAdd,
 } from './styled';
@@ -27,7 +31,7 @@ import {
 
 import { AppState } from '../../services/state/store';
 import selectors from '../../services/state/selectors';
-// import actions from '../../services/state/actions';
+import actions from '../../services/state/actions';
 
 
 
@@ -57,6 +61,7 @@ interface TopBarStateProperties {
 }
 
 interface TopBarDispatchProperties {
+    dispatchAddPluriverse: typeof actions.data.addPluriverse;
 }
 
 type TopBarProperties = TopBarOwnProperties
@@ -72,11 +77,24 @@ const TopBar: React.FC<TopBarProperties> = (
         stateGeneralTheme,
         // stateInteractionTheme,
         statePluriverses,
+
+        /** dispatch */
+        dispatchAddPluriverse,
     } = properties;
 
 
     /** state */
     const [mouseOver, setMouseOver] = useState(false);
+
+
+    /** handlers */
+    const addPluriverse = () =>{
+        const pluriverse: TerminalPluriverse = {
+            id: uuid(),
+            terminals: [],
+        };
+        dispatchAddPluriverse(pluriverse);
+    }
 
 
     /** render */
@@ -103,7 +121,7 @@ const TopBar: React.FC<TopBarProperties> = (
                     <StyledTopBarAdd>
                         <PluridIconAdd
                             size="small"
-                            atClick={() => {}}
+                            atClick={addPluriverse}
                         />
                     </StyledTopBarAdd>
                 </>
@@ -125,6 +143,11 @@ const mapStateToProperties = (
 const mapDispatchToProperties = (
     dispatch: ThunkDispatch<{}, {}, AnyAction>,
 ): TopBarDispatchProperties => ({
+    dispatchAddPluriverse: (
+        pluriverse,
+    ) => dispatch(
+        actions.data.addPluriverse(pluriverse),
+    ),
 });
 
 

@@ -5,6 +5,10 @@ import {
 } from '@plurid/plurid-themes';
 
 import {
+    PluridIconDocuments,
+} from '@plurid/plurid-icons-react';
+
+import {
     StyledPluriverseItem,
 } from './styled';
 
@@ -41,7 +45,9 @@ const PluriverseItem: React.FC<PluriverseItemProperties> = (
             theme={theme}
             atClick={handleClick}
         >
-            {pluriverse.id}
+            <PluridIconDocuments />
+
+            {pluriverse.name || ''}
         </StyledPluriverseItem>
     );
 }
