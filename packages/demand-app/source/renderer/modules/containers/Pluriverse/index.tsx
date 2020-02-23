@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+    useEffect,
+} from 'react';
 
 import { AnyAction } from 'redux';
 import { connect } from 'react-redux';
@@ -34,6 +36,8 @@ interface PluriverseOwnProperties {
 interface PluriverseStateProperties {
     stateGeneralTheme: Theme;
     stateInteractionTheme: Theme;
+    statePluriverses: any;
+    stateActivePluriverse: string;
 }
 
 interface PluriverseDispatchProperties {
@@ -47,11 +51,13 @@ const Pluriverse: React.FC<PluriverseProperties> = (
     properties,
 ) => {
     /** properties */
-    // const {
-        // /** state */
+    const {
+        /** state */
         // stateGeneralTheme,
         // stateInteractionTheme,
-    // } = properties;
+        statePluriverses,
+        stateActivePluriverse,
+    } = properties;
 
     const pluridPages: PluridPage[] = [
         {
@@ -93,6 +99,19 @@ const Pluriverse: React.FC<PluriverseProperties> = (
     ];
 
 
+    /** effects */
+    useEffect(() => {
+        if (stateActivePluriverse) {
+            const pluriverse = statePluriverses[stateActivePluriverse];
+            const {
+                terminals,
+            } = pluriverse;
+        }
+    }, [
+        stateActivePluriverse,
+    ]);
+
+
     /** render */
     return (
         <StyledPluriverse>
@@ -111,6 +130,8 @@ const mapStateToProperties = (
 ): PluriverseStateProperties => ({
     stateGeneralTheme: selectors.themes.getGeneralTheme(state),
     stateInteractionTheme: selectors.themes.getInteractionTheme(state),
+    statePluriverses: selectors.data.getPluriverses(state),
+    stateActivePluriverse: selectors.data.getActivePluriverse(state),
 });
 
 
