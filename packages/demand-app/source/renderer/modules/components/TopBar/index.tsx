@@ -2,7 +2,13 @@ import React, {
     useState,
 } from 'react';
 
-import themes from '@plurid/plurid-themes';
+import { AnyAction } from 'redux';
+import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+
+import {
+    Theme,
+} from '@plurid/plurid-themes';
 
 import {
     PluridIconAdd,
@@ -19,28 +25,56 @@ import {
     TerminalPluriverse,
 } from '../../data/interfaces';
 
+import { AppState } from '../../services/state/store';
+import selectors from '../../services/state/selectors';
+// import actions from '../../services/state/actions';
+
 
 
 interface IndexedTerminalPluriverse {
     [key: string]: TerminalPluriverse;
 }
 
-const terminalPluriverses: IndexedTerminalPluriverse = {
-    'one': {
-        id: 'one',
-        terminals: [],
-    },
-    'two': {
-        id: 'two',
-        terminals: [],
-    },
-};
+// const terminalPluriverses: IndexedTerminalPluriverse = {
+//     'one': {
+//         id: 'one',
+//         terminals: [],
+//     },
+//     'two': {
+//         id: 'two',
+//         terminals: [],
+//     },
+// };
 
 
-const theme = themes.plurid;
+interface TopBarOwnProperties {
+}
 
-const TopBar: React.FC<any> = (
+interface TopBarStateProperties {
+    stateGeneralTheme: Theme;
+    stateInteractionTheme: Theme;
+    statePluriverses: IndexedTerminalPluriverse;
+}
+
+interface TopBarDispatchProperties {
+}
+
+type TopBarProperties = TopBarOwnProperties
+    & TopBarStateProperties
+    & TopBarDispatchProperties;
+
+const TopBar: React.FC<TopBarProperties> = (
+    properties,
 ) => {
+    /** properties */
+    const {
+        /** state */
+        stateGeneralTheme,
+        // stateInteractionTheme,
+        statePluriverses,
+    } = properties;
+
+
     /** state */
     const [mouseOver, setMouseOver] = useState(false);
 
@@ -52,15 +86,15 @@ const TopBar: React.FC<any> = (
             onMouseLeave={() => setMouseOver(false)}
             onMouseMove={() => !mouseOver ? setMouseOver(true) : undefined}
             mouseOver={mouseOver}
-            theme={theme}
+            theme={stateGeneralTheme}
         >
             {/* {mouseOver && ( */}
                 <>
-                    {Object.values(terminalPluriverses).map(pluriverse => {
+                    {Object.values(statePluriverses).map(pluriverse => {
                         return (
                             <PluriverseItem
                                 key={pluriverse.id}
-                                theme={theme}
+                                theme={stateGeneralTheme}
                                 pluriverse={pluriverse}
                             />
                         );
@@ -79,4 +113,22 @@ const TopBar: React.FC<any> = (
 }
 
 
-export default TopBar;
+const mapStateToProperties = (
+    state: AppState,
+): TopBarStateProperties => ({
+    stateGeneralTheme: selectors.themes.getGeneralTheme(state),
+    stateInteractionTheme: selectors.themes.getInteractionTheme(state),
+    statePluriverses: selectors.data.getPluriverses(state),
+});
+
+
+const mapDispatchToProperties = (
+    dispatch: ThunkDispatch<{}, {}, AnyAction>,
+): TopBarDispatchProperties => ({
+});
+
+
+export default connect(
+    mapStateToProperties,
+    mapDispatchToProperties,
+)(TopBar);
