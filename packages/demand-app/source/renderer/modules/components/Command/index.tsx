@@ -11,6 +11,10 @@ import {
     PluridTextline,
 } from '@plurid/plurid-ui-react';
 
+import {
+    runCommand,
+} from '../../services/logic/command';
+
 
 
 interface CommandProperties {
@@ -36,6 +40,9 @@ const Command: React.FC<CommandProperties> = (
     }
 
     const handleEnter = () => {
+        const result = runCommand(commandValue);
+        console.log(result);
+
         setCommandValue('');
     }
 
