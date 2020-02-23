@@ -35,6 +35,9 @@ const Command: React.FC<CommandProperties> = (
         setCommandValue(event.target.value);
     }
 
+    const handleEnter = () => {
+    }
+
 
     /** render */
     return (
@@ -49,7 +52,9 @@ const Command: React.FC<CommandProperties> = (
                 devisible={true}
                 style={{
                     fontFamily: 'Inconsolata, Courier, monospace',
+                    fontSize: '1.2rem',
                 }}
+                enterAtClick={handleEnter}
             />
         </StyledCommand>
     );
