@@ -3,8 +3,15 @@ import styled from 'styled-components';
 
 
 export const StyledCommand = styled.div`
-    min-height: 140px;
+    min-height: 70px;
     padding: 2rem;
     display: grid;
-    place-content: center;
+    align-items: center;
+    grid-template-columns: 2rem auto;
+    font-family: 'Courier New', Courier, monospace;
+`;
+
+
+export const StyledCommandMark = styled.div`
+    align-self: center;
 `;

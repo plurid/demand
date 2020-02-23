@@ -3,6 +3,11 @@ import styled from 'styled-components';
 
 
 export const StyledTerminal: any = styled.div`
-    min-height: 700px;
+    font-family: 'Courier New', Courier, monospace;
+    min-height: 400px;
     padding: 2rem;
+`;
+
+
+export const StyledTerminalLine: any = styled.div`
 `;
