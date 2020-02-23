@@ -408,10 +408,10 @@
   resolved "https://registry.yarnpkg.com/@plurid/plurid-pubsub/-/plurid-pubsub-0.1.3.tgz#f5014195a065f13c47f2895e4942ba1f3ec045a3"
   integrity sha512-mviWTVQhkIifQApuLa60jSVA+azeeKXYvNTFejzJJtEFG0s1h2a1BqtaH/Fj4wCzymivJsD47JqbaLfg7Xw4zA==
 
-"@plurid/plurid-react@^0.1.100":
-  version "0.1.100"
-  resolved "https://registry.yarnpkg.com/@plurid/plurid-react/-/plurid-react-0.1.100.tgz#4863f278f2158d355e3d271cd113ca486792a5ca"
-  integrity sha512-EmhPPUw4swVxe1DW2NQvRzBQQZURzjwoQDGRVCjVIfetAN14Qwf52rVcZr6+/GxdSfqlIqP1tfYDw7njCAxCxA==
+"@plurid/plurid-react@^0.1.101":
+  version "0.1.101"
+  resolved "https://registry.yarnpkg.com/@plurid/plurid-react/-/plurid-react-0.1.101.tgz#0773eb5f328828703cd1f9d5fe255a620473e4ad"
+  integrity sha512-/hN1ezL0eTi1BEnDvF3wZC1gWagNRinQ0HQjSMzY0mAnrUs48Mr8yTtvEJ/RXK6+l2LyHZXAG5p8J48gTocuQQ==
   dependencies:
     "@plurid/plurid-data" "^0.1.93"
     "@plurid/plurid-engine" "^0.1.41"
