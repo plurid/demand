@@ -21,6 +21,7 @@ import {
 interface PluriverseItemProperties {
     theme: Theme;
     pluriverse: TerminalPluriverse;
+    active: boolean;
 }
 
 const PluriverseItem: React.FC<PluriverseItemProperties> = (
@@ -31,6 +32,7 @@ const PluriverseItem: React.FC<PluriverseItemProperties> = (
         /** own */
         theme,
         pluriverse,
+        active,
     } = properties;
 
 
@@ -43,6 +45,7 @@ const PluriverseItem: React.FC<PluriverseItemProperties> = (
     return (
         <StyledPluriverseItem
             theme={theme}
+            active={active}
             atClick={handleClick}
         >
             <PluridIconDocuments />
