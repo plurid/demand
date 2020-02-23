@@ -6,7 +6,6 @@ import {
 
 
 
-
 interface TerminalProperties {
 }
 
@@ -18,7 +17,6 @@ const Terminal: React.FC<TerminalProperties> = (
     /** render */
     return (
         <StyledTerminal>
-            >
         </StyledTerminal>
     );
 }
