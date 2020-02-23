@@ -2,9 +2,9 @@ import { AppState } from '../store';
 
 
 
-const getDocuments = (state: AppState) => state.data.documents;
+const getPluriverses = (state: AppState) => state.data.pluriverses;
 
 
 export default {
-    getDocuments,
+    getPluriverses,
 };
