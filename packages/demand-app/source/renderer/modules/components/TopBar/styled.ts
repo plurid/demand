@@ -6,7 +6,7 @@ export const StyledTopBar: any = styled.div`
     -webkit-app-region: drag;
 
     position: absolute;
-    top: 30px;
+    top: 0;
     left: 0;
     right: 0;
     height: 40px;
