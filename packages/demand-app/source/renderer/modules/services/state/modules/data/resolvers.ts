@@ -27,3 +27,14 @@ export const addPluriverse = (
         },
     };
 }
+
+
+export const setActivePluriverse = (
+    state: Types.State,
+    action: Types.DataSetActivePluriverseAction,
+): Types.State => {
+    return {
+        ...state,
+        activePluriverse: action.payload,
+    };
+}

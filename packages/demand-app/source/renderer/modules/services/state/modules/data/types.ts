@@ -15,10 +15,19 @@ export interface DataAddPluriverseAction {
 }
 
 
-
-export interface State {
-    pluriverses: Indexed<TerminalPluriverse>;
+export const DATA_SET_ACTIVE_PLURIVERSE = 'DATA_SET_ACTIVE_PLURIVERSE';
+export interface DataSetActivePluriverseAction {
+    type: typeof DATA_SET_ACTIVE_PLURIVERSE;
+    payload: string;
 }
 
 
-export type Actions = DataAddPluriverseAction;
+
+export interface State {
+    pluriverses: Indexed<TerminalPluriverse>;
+    activePluriverse: string;
+}
+
+
+export type Actions = DataAddPluriverseAction
+    | DataSetActivePluriverseAction;
