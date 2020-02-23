@@ -7,7 +7,7 @@ import PluridApp, {
     SPACE_LAYOUT,
 } from '@plurid/plurid-react';
 
-import Page from '../../components/Page';
+import Terminal from '../../components/Terminal';
 
 
 
@@ -17,7 +17,7 @@ const Pluriverse: React.FC<any> = () => {
             id: 'one',
             path: '/foo',
             component: {
-                element: () => <Page />,
+                element: () => <Terminal />,
             },
         },
     ];
@@ -26,12 +26,12 @@ const Pluriverse: React.FC<any> = () => {
         theme: 'plurid',
         space: {
             layout: {
-                type: SPACE_LAYOUT.ZIG_ZAG,
+                type: SPACE_LAYOUT.COLUMNS,
             },
         },
         elements: {
             plane: {
-                opacity: 0,
+                // opacity: 0,
                 controls: {
                     show: false,
                 },
