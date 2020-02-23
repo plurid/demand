@@ -8,7 +8,6 @@ export const StyledPluriverseItem: any = styled.div`
     display: grid;
     place-content: center;
     cursor: pointer;
-    user-select: none;
     font-size: 0.8rem;
     z-index: 99999;
 

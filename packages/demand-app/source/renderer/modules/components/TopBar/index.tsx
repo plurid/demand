@@ -124,10 +124,11 @@ const TopBar: React.FC<TopBarProperties> = (
                         );
                     })}
 
-                    <StyledTopBarAdd>
+                    <StyledTopBarAdd
+                        onClick={addPluriverse}
+                    >
                         <PluridIconAdd
                             size="small"
-                            atClick={addPluriverse}
                         />
                     </StyledTopBarAdd>
                 </>
