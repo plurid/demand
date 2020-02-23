@@ -7,6 +7,7 @@ export const StyledTerminal: any = styled.div`
     min-height: 400px;
     padding: 2rem;
     font-size: 1.2rem;
+    overflow: hidden;
 `;
 
 
