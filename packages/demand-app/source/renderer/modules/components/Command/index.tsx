@@ -47,6 +47,9 @@ const Command: React.FC<CommandProperties> = (
                 text={commandValue}
                 atChange={handleCommandChange}
                 devisible={true}
+                style={{
+                    fontFamily: 'Inconsolata, Courier, monospace',
+                }}
             />
         </StyledCommand>
     );

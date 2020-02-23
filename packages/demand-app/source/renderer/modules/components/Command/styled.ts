@@ -8,7 +8,7 @@ export const StyledCommand = styled.div`
     display: grid;
     align-items: center;
     grid-template-columns: 2rem auto;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Inconsolata', 'Courier New', Courier, monospace;
 `;
 
 
