@@ -58,6 +58,7 @@ interface TopBarStateProperties {
     stateGeneralTheme: Theme;
     stateInteractionTheme: Theme;
     statePluriverses: IndexedTerminalPluriverse;
+    stateActivePluriverse: string;
 }
 
 interface TopBarDispatchProperties {
@@ -77,6 +78,7 @@ const TopBar: React.FC<TopBarProperties> = (
         stateGeneralTheme,
         // stateInteractionTheme,
         statePluriverses,
+        stateActivePluriverse,
 
         /** dispatch */
         dispatchAddPluriverse,
@@ -109,11 +111,16 @@ const TopBar: React.FC<TopBarProperties> = (
             {/* {mouseOver && ( */}
                 <>
                     {Object.values(statePluriverses).map(pluriverse => {
+                        const {
+                            id,
+                        } = pluriverse;
+
                         return (
                             <PluriverseItem
-                                key={pluriverse.id}
+                                key={id}
                                 theme={stateGeneralTheme}
                                 pluriverse={pluriverse}
+                                active={stateActivePluriverse === id}
                             />
                         );
                     })}
@@ -137,6 +144,7 @@ const mapStateToProperties = (
     stateGeneralTheme: selectors.themes.getGeneralTheme(state),
     stateInteractionTheme: selectors.themes.getInteractionTheme(state),
     statePluriverses: selectors.data.getPluriverses(state),
+    stateActivePluriverse: selectors.data.getActivePluriverse(state),
 });
 
 
