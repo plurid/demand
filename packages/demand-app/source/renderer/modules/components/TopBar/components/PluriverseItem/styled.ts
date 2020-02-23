@@ -9,7 +9,6 @@ export const StyledPluriverseItem: any = styled.div`
     place-content: center;
     cursor: pointer;
     font-size: 0.8rem;
-    z-index: 99999;
 
     border-left: 1px solid ${(props: any) => {
         return props.theme.backgroundColorPrimaryAlpha;

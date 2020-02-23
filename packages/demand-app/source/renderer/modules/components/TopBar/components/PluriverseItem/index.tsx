@@ -9,7 +9,7 @@ import {
 } from '@plurid/plurid-themes';
 
 import {
-    PluridIconDocuments,
+    PluridIconCommand,
 } from '@plurid/plurid-icons-react';
 
 import {
@@ -73,9 +73,11 @@ const PluriverseItem: React.FC<PluriverseItemProperties> = (
         <StyledPluriverseItem
             theme={stateGeneralTheme}
             active={active}
-            atClick={handleClick}
+            onClick={handleClick}
         >
-            <PluridIconDocuments />
+            <PluridIconCommand
+                size="small"
+            />
 
             {pluriverse.name || ''}
         </StyledPluriverseItem>
