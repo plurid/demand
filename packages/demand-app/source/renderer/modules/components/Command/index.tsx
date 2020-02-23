@@ -36,6 +36,7 @@ const Command: React.FC<CommandProperties> = (
     }
 
     const handleEnter = () => {
+        setCommandValue('');
     }
 
 
