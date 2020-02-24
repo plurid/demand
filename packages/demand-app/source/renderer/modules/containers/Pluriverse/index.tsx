@@ -88,7 +88,7 @@ const Pluriverse: React.FC<PluriverseProperties> = (
     /** state */
     const [pluridPages, setPluridPages] = useState<PluridPage[]>([]);
     const [pluridView, setPluridView] = useState<string[]>([]);
-    const [terminals, setTerminals] = useState<string[]>([]);
+    const [pluriverse, setPluriverse] = useState<TerminalPluriverse>();
 
 
     /** effects */
@@ -96,11 +96,7 @@ const Pluriverse: React.FC<PluriverseProperties> = (
     useEffect(() => {
         if (stateActivePluriverse) {
             const pluriverse = statePluriverses[stateActivePluriverse];
-            const {
-                terminals,
-            } = pluriverse;
-
-            setTerminals(terminals);
+            setPluriverse(pluriverse);
         }
     }, [
         stateActivePluriverse,
@@ -108,7 +104,11 @@ const Pluriverse: React.FC<PluriverseProperties> = (
 
     /** Handle Plurid Pages and View */
     useEffect(() => {
-        const terminalPluridPages = terminals.map(terminalID => {
+        if (!pluriverse) {
+            return;
+        }
+
+        const terminalPluridPages = pluriverse.terminals.map(terminalID => {
             const terminalPluridPage = {
                 id: terminalID,
                 path: '/' + terminalID,
@@ -128,7 +128,11 @@ const Pluriverse: React.FC<PluriverseProperties> = (
                 id: 'command',
                 path: '/command',
                 component: {
-                    element: () => <Command />,
+                    element: () => (
+                        <Command
+                            pluriverseID={pluriverse.id}
+                        />
+                    ),
                 },
             },
             ...terminalPluridPages,
@@ -136,7 +140,7 @@ const Pluriverse: React.FC<PluriverseProperties> = (
 
         setPluridPages(pluridPages);
 
-        const terminalPluridView = terminals.map(terminalID => {
+        const terminalPluridView = pluriverse.terminals.map(terminalID => {
             return '/' + terminalID;
         });
 
@@ -147,7 +151,7 @@ const Pluriverse: React.FC<PluriverseProperties> = (
 
         setPluridView(pluridView);
     }, [
-        terminals,
+        pluriverse,
     ]);
 
 
