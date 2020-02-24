@@ -21,6 +21,12 @@ export const StyledTopBar: any = styled.div`
         }
         return 'transparent';
     }};
+    box-shadow: ${(props: any) => {
+        if (props.mouseOver) {
+            return 'inset 0px -2px 4px 0px hsl(220, 10%, 0%)';
+        }
+        return 'initial';
+    }};
 `;
 
 
