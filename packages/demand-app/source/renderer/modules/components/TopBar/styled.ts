@@ -12,7 +12,6 @@ export const StyledTopBar: any = styled.div`
     height: 40px;
     z-index: 99999;
 
-    padding-left: 80px;
     display: flex;
     flex-direction: row;
 

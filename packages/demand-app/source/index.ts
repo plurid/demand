@@ -22,13 +22,20 @@ function createWindow() {
         minHeight: 500,
         minWidth: 300,
         title: 'demand',
-        // titleBarStyle: 'hiddenInset',
+
+        /**
+         * BUG
+         * The cursor is not correctly displayed in the place where the normal topbar would be.
+         * https://github.com/electron/electron/issues/5723
+         */
         frame: false,
-        titleBarStyle: 'customButtonsOnHover',
+        titleBarStyle: 'hidden', // or 'customButtonsOnHover',
+
         webPreferences: {
             nodeIntegration: true,
         },
     });
+    win.setWindowButtonVisibility(false)
     // systemPreferences.isDarkMode();
 
     // and load the index.html of the app.
