@@ -2,30 +2,69 @@ import React, {
     useState,
 } from 'react';
 
+import { AnyAction } from 'redux';
+import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+
 import {
-    StyledCommand,
-    StyledCommandMark,
-} from './styled';
+    Theme,
+} from '@plurid/plurid-themes';
 
 import {
     PluridTextline,
 } from '@plurid/plurid-ui-react';
 
 import {
+    uuidv4 as uuid,
+} from '@plurid/plurid-functions';
+
+import {
+    StyledCommand,
+    StyledCommandMark,
+} from './styled';
+
+import {
+    Terminal,
+} from '../../data/interfaces';
+
+import {
     runCommand,
 } from '../../services/logic/command';
 
+import { AppState } from '../../services/state/store';
+import selectors from '../../services/state/selectors';
+import actions from '../../services/state/actions';
 
 
-interface CommandProperties {
+
+interface CommandOwnProperties {
 }
+
+interface CommandStateProperties {
+    stateGeneralTheme: Theme;
+    stateInteractionTheme: Theme;
+}
+
+interface CommandDispatchProperties {
+    dispatchTerminalsAddTerminal: typeof actions.terminals.addTerminal;
+}
+
+type CommandProperties = CommandOwnProperties
+    & CommandStateProperties
+    & CommandDispatchProperties;
 
 const Command: React.FC<CommandProperties> = (
     properties,
 ) => {
     /** properties */
-    // const {
-    // } = properties;
+    const {
+        /** state */
+        stateGeneralTheme,
+        stateInteractionTheme,
+
+        /** dispatch */
+        dispatchTerminalsAddTerminal,
+    } = properties;
 
 
     /** state */
@@ -41,7 +80,15 @@ const Command: React.FC<CommandProperties> = (
 
     const handleEnter = () => {
         const result = runCommand(commandValue);
-        console.log(result);
+        const lines = result.split('\n');
+
+        const terminalID = uuid();
+        const terminal: Terminal = {
+            id: terminalID,
+            lines,
+        };
+
+        dispatchTerminalsAddTerminal(terminal);
 
         setCommandValue('');
     }
@@ -69,4 +116,26 @@ const Command: React.FC<CommandProperties> = (
 }
 
 
-export default Command;
+const mapStateToProperties = (
+    state: AppState,
+): CommandStateProperties => ({
+    stateGeneralTheme: selectors.themes.getGeneralTheme(state),
+    stateInteractionTheme: selectors.themes.getInteractionTheme(state),
+});
+
+
+const mapDispatchToProperties = (
+    dispatch: ThunkDispatch<{}, {}, AnyAction>,
+): CommandDispatchProperties => ({
+    dispatchTerminalsAddTerminal: (
+        terminal,
+    ) => dispatch(
+        actions.terminals.addTerminal(terminal),
+    ),
+});
+
+
+export default connect(
+    mapStateToProperties,
+    mapDispatchToProperties,
+)(Command);
