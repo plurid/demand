@@ -1,11 +1,19 @@
-import installExtension, {
-    REDUX_DEVTOOLS,
-} from 'electron-devtools-installer';
+import {
+    BrowserWindow,
+} from 'electron';
 
 import environment from './environment';
 
 
 
-if (!environment.production) {
-    installExtension(REDUX_DEVTOOLS);
+export const installExtensions = () => {
+    if (!environment.production) {
+        const reduxDevTools = process.env.REDUX_DEV_TOOLS;
+
+        if (reduxDevTools) {
+            BrowserWindow.addDevToolsExtension(
+                reduxDevTools,
+            );
+        }
+    }
 }
