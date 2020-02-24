@@ -101,8 +101,13 @@ const Pluriverse: React.FC<PluriverseProperties> = (
     /** Handle Plurid Pages and View */
     useEffect(() => {
         const terminalPluridPages = terminals.map(terminal => {
+            const {
+                id,
+            } = terminal;
+
             const terminalPluridPage = {
-                path: '/' + terminal.id,
+                id,
+                path: '/' + id,
                 component: {
                     element: () => <Terminal />,
                 },
@@ -112,6 +117,7 @@ const Pluriverse: React.FC<PluriverseProperties> = (
 
         const pluridPages: PluridPage[] = [
             {
+                id: 'command',
                 path: '/command',
                 component: {
                     element: () => <Command />,
@@ -140,11 +146,13 @@ const Pluriverse: React.FC<PluriverseProperties> = (
     /** render */
     return (
         <StyledPluriverse>
-            <PluridApp
-                pages={pluridPages}
-                configuration={pluridAppConfiguration}
-                view={pluridView}
-            />
+            {pluridPages.length > 0 && (
+                <PluridApp
+                    pages={pluridPages}
+                    configuration={pluridAppConfiguration}
+                    view={pluridView}
+                />
+            )}
         </StyledPluriverse>
     );
 }
