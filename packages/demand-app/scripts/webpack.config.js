@@ -13,11 +13,17 @@ module.exports = [
             extensions: [".ts", ".tsx", ".js", ".jsx"]
         },
         module: {
-            rules: [{
-                test: /\.ts$/,
-                include: /source/,
-                use: [{ loader: 'ts-loader' }]
-            }]
+            rules: [
+                {
+                    test: /\.json$/,
+                    use: 'json-loader'
+                },
+                {
+                    test: /\.ts$/,
+                    include: /source/,
+                    use: [{ loader: 'ts-loader' }]
+                },
+            ],
         },
         output: {
             path: path.join(__dirname, '../build'),
