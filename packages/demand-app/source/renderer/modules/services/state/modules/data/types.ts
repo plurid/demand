@@ -15,6 +15,17 @@ export interface DataAddPluriverseAction {
 }
 
 
+export const DATA_ADD_TERMINAL_TO_PLURIVERSE = 'DATA_ADD_TERMINAL_TO_PLURIVERSE';
+export interface DataAddTerminalToPluriversePayload {
+    pluriverseID: string;
+    terminalID: string;
+}
+export interface DataAddTerminalToPluriverseAction {
+    type: typeof DATA_ADD_TERMINAL_TO_PLURIVERSE;
+    payload: DataAddTerminalToPluriversePayload;
+}
+
+
 export const DATA_SET_ACTIVE_PLURIVERSE = 'DATA_SET_ACTIVE_PLURIVERSE';
 export interface DataSetActivePluriverseAction {
     type: typeof DATA_SET_ACTIVE_PLURIVERSE;
@@ -30,4 +41,5 @@ export interface State {
 
 
 export type Actions = DataAddPluriverseAction
+    | DataAddTerminalToPluriverseAction
     | DataSetActivePluriverseAction;
