@@ -19,8 +19,16 @@ import PluridApp, {
 } from '@plurid/plurid-react';
 
 import {
+    Indexed,
+} from '@plurid/plurid-data';
+
+import {
     StyledPluriverse,
 } from './styled';
+
+import {
+    TerminalPluriverse,
+} from '../../data/interfaces';
 
 import Command from '../../components/Command';
 import Terminal from '../../components/Terminal';
@@ -37,7 +45,7 @@ interface PluriverseOwnProperties {
 interface PluriverseStateProperties {
     stateGeneralTheme: Theme;
     stateInteractionTheme: Theme;
-    statePluriverses: any;
+    statePluriverses: Indexed<TerminalPluriverse>;
     stateActivePluriverse: string;
 }
 
@@ -80,7 +88,7 @@ const Pluriverse: React.FC<PluriverseProperties> = (
     /** state */
     const [pluridPages, setPluridPages] = useState<PluridPage[]>([]);
     const [pluridView, setPluridView] = useState<string[]>([]);
-    const [terminals, setTerminals] = useState<any[]>([]);
+    const [terminals, setTerminals] = useState<string[]>([]);
 
 
     /** effects */
@@ -100,16 +108,16 @@ const Pluriverse: React.FC<PluriverseProperties> = (
 
     /** Handle Plurid Pages and View */
     useEffect(() => {
-        const terminalPluridPages = terminals.map(terminal => {
-            const {
-                id,
-            } = terminal;
-
+        const terminalPluridPages = terminals.map(terminalID => {
             const terminalPluridPage = {
-                id,
-                path: '/' + id,
+                id: terminalID,
+                path: '/' + terminalID,
                 component: {
-                    element: () => <Terminal />,
+                    element: () => (
+                        <Terminal
+                            id={terminalID}
+                        />
+                    ),
                 },
             };
             return terminalPluridPage;
@@ -128,8 +136,8 @@ const Pluriverse: React.FC<PluriverseProperties> = (
 
         setPluridPages(pluridPages);
 
-        const terminalPluridView = terminals.map(terminal => {
-            return '/' + terminal.id;
+        const terminalPluridView = terminals.map(terminalID => {
+            return '/' + terminalID;
         });
 
         const pluridView = [
