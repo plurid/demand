@@ -24,29 +24,6 @@
         "electron.mac": "yarn build && electron-packager ./build/ --overwrite --platform=darwin --arch=x64 --icon=./build/assets/meta/demand.icns --prune=true --out=demand",
         "electron.windows": "yarn build && electron-packager ./build/ demand --overwrite --asar=true --platform=win32 --arch=ia32 --icon=./build/assets/meta/demand.ico --prune=true --out=demand --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"demand\""
     },
-    "devDependencies": {
-        "@types/electron-devtools-installer": "^2.2.0",
-        "@types/jest": "^25.1.3",
-        "@types/react": "^16.9.22",
-        "@types/react-dom": "^16.9.5",
-        "@types/react-redux": "^7.1.7",
-        "@types/styled-components": "^5.0.0",
-        "copy-webpack-plugin": "^5.1.1",
-        "css-loader": "^3.4.2",
-        "electron-devtools-installer": "^2.2.4",
-        "electron-packager": "^14.2.1",
-        "html-webpack-plugin": "^3.2.0",
-        "jest": "^25.1.0",
-        "json-loader": "^0.5.7",
-        "redux-devtools-extension": "^2.13.8",
-        "style-loader": "^1.1.3",
-        "ts-jest": "^25.2.1",
-        "ts-loader": "^6.2.1",
-        "ts-node": "^8.6.2",
-        "typescript": "^3.8.2",
-        "webpack": "^4.41.6",
-        "webpack-cli": "^3.3.11"
-    },
     "dependencies": {
         "@plurid/plurid-functions": "^0.1.7",
         "@plurid/plurid-icons-react": "^0.1.18",
@@ -62,5 +39,26 @@
         "redux": "^4.0.5",
         "redux-thunk": "^2.3.0",
         "styled-components": "^5.0.1"
+    },
+    "devDependencies": {
+        "@types/jest": "^25.1.3",
+        "@types/react": "^16.9.22",
+        "@types/react-dom": "^16.9.5",
+        "@types/react-redux": "^7.1.7",
+        "@types/styled-components": "^5.0.0",
+        "copy-webpack-plugin": "^5.1.1",
+        "css-loader": "^3.4.2",
+        "electron-packager": "^14.2.1",
+        "html-webpack-plugin": "^3.2.0",
+        "jest": "^25.1.0",
+        "json-loader": "^0.5.7",
+        "redux-devtools-extension": "^2.13.8",
+        "style-loader": "^1.1.3",
+        "ts-jest": "^25.2.1",
+        "ts-loader": "^6.2.1",
+        "ts-node": "^8.6.2",
+        "typescript": "^3.8.2",
+        "webpack": "^4.41.6",
+        "webpack-cli": "^3.3.11"
     }
 }
