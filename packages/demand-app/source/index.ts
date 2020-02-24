@@ -3,7 +3,9 @@ import {
     BrowserWindow,
 } from 'electron';
 
-import './window/utilities/devtools';
+import {
+    installExtensions,
+} from './window/utilities/devtools';
 
 
 
@@ -52,6 +54,8 @@ function createWindow() {
         // when you should delete the corresponding element.
         win = null;
     });
+
+    installExtensions();
 }
 
 // This method will be called when Electron has finished
