@@ -1,4 +1,5 @@
 import React, {
+    useState,
     useEffect,
 } from 'react';
 
@@ -59,23 +60,6 @@ const Pluriverse: React.FC<PluriverseProperties> = (
         stateActivePluriverse,
     } = properties;
 
-    const pluridPages: PluridPage[] = [
-        {
-            id: 'terminal1',
-            path: '/terminal-1',
-            component: {
-                element: () => <Terminal />,
-            },
-        },
-        {
-            id: 'command',
-            path: '/command',
-            component: {
-                element: () => <Command />,
-            },
-        },
-    ];
-
     const pluridAppConfiguration: RecursivePartial<PluridConfiguration> = {
         theme: 'plurid',
         space: {
@@ -85,7 +69,6 @@ const Pluriverse: React.FC<PluriverseProperties> = (
         },
         elements: {
             plane: {
-                // opacity: 0,
                 controls: {
                     show: false,
                 },
@@ -93,22 +76,64 @@ const Pluriverse: React.FC<PluriverseProperties> = (
         },
     };
 
-    const pluridView = [
-        '/terminal-1',
-        '/command',
-    ];
+
+    /** state */
+    const [pluridPages, setPluridPages] = useState<PluridPage[]>([]);
+    const [pluridView, setPluridView] = useState<string[]>([]);
+    const [terminals, setTerminals] = useState<any[]>([]);
 
 
     /** effects */
+    /** Get Pluriverse */
     useEffect(() => {
         if (stateActivePluriverse) {
             const pluriverse = statePluriverses[stateActivePluriverse];
             const {
                 terminals,
             } = pluriverse;
+
+            setTerminals(terminals);
         }
     }, [
         stateActivePluriverse,
+    ]);
+
+    /** Handle Plurid Pages and View */
+    useEffect(() => {
+        const terminalPluridPages = terminals.map(terminal => {
+            const terminalPluridPage = {
+                path: '/' + terminal.id,
+                component: {
+                    element: () => <Terminal />,
+                },
+            };
+            return terminalPluridPage;
+        });
+
+        const pluridPages: PluridPage[] = [
+            {
+                path: '/command',
+                component: {
+                    element: () => <Command />,
+                },
+            },
+            ...terminalPluridPages,
+        ];
+
+        setPluridPages(pluridPages);
+
+        const terminalPluridView = terminals.map(terminal => {
+            return '/' + terminal.id;
+        });
+
+        const pluridView = [
+            '/command',
+            ...terminalPluridView,
+        ];
+
+        setPluridView(pluridView);
+    }, [
+        terminals,
     ]);
 
 
