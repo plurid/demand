@@ -1,9 +1,10 @@
 import {
     app,
-    // BrowserView,
     BrowserWindow,
-    // systemPreferences,
 } from 'electron';
+
+import './window/utilities/devtools';
+
 
 
 // Keep a global reference of the window object, if you don't, the window will
