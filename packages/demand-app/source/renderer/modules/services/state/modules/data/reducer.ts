@@ -13,6 +13,8 @@ const reducer = (
     switch(action.type) {
         case Types.DATA_ADD_PLURIVERSE:
             return resolvers.addPluriverse(state, action);
+        case Types.DATA_ADD_TERMINAL_TO_PLURIVERSE:
+            return resolvers.addTerminalToPluriverse(state, action);
         case Types.DATA_SET_ACTIVE_PLURIVERSE:
             return resolvers.setActivePluriverse(state, action);
         default:

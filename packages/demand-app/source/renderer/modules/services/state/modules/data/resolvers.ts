@@ -29,6 +29,47 @@ export const addPluriverse = (
 }
 
 
+export const addTerminalToPluriverse = (
+    state: Types.State,
+    action: Types.DataAddTerminalToPluriverseAction,
+): Types.State => {
+    const {
+        pluriverseID,
+        terminalID,
+    } = action.payload;
+
+    const updatedState = {
+        ...state,
+    };
+
+    const updatedPluriverse = {
+        ...state.pluriverses,
+    };
+
+    const pluriverse = updatedPluriverse[pluriverseID];
+
+    const updatedTerminals = [
+        ...pluriverse.terminals,
+        terminalID
+    ];
+
+    pluriverse.terminals = [
+        ...updatedTerminals,
+    ];
+
+    updatedPluriverse[pluriverseID] = {
+        ...pluriverse,
+    };
+
+    return {
+        ...updatedState,
+        pluriverses: {
+            ...updatedPluriverse,
+        },
+    };
+}
+
+
 export const setActivePluriverse = (
     state: Types.State,
     action: Types.DataSetActivePluriverseAction,

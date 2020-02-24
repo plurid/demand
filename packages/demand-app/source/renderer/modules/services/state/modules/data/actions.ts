@@ -16,6 +16,16 @@ export const addPluriverse = (
 }
 
 
+export const addTerminalToPluriverse = (
+    payload: Types.DataAddTerminalToPluriversePayload,
+): Types.DataAddTerminalToPluriverseAction => {
+    return {
+        type: Types.DATA_ADD_TERMINAL_TO_PLURIVERSE,
+        payload,
+    };
+}
+
+
 export const setActivePluriverse = (
     payload: string,
 ): Types.DataSetActivePluriverseAction => {
