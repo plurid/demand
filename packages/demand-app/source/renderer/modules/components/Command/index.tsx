@@ -38,6 +38,7 @@ import actions from '../../services/state/actions';
 
 
 interface CommandOwnProperties {
+    pluriverseID: string;
 }
 
 interface CommandStateProperties {
@@ -47,6 +48,7 @@ interface CommandStateProperties {
 
 interface CommandDispatchProperties {
     dispatchTerminalsAddTerminal: typeof actions.terminals.addTerminal;
+    dispatchDataAddTerminalToPluriverse: typeof actions.data.addTerminalToPluriverse;
 }
 
 type CommandProperties = CommandOwnProperties
@@ -58,12 +60,16 @@ const Command: React.FC<CommandProperties> = (
 ) => {
     /** properties */
     const {
+        /** own */
+        pluriverseID,
+
         /** state */
-        stateGeneralTheme,
-        stateInteractionTheme,
+        // stateGeneralTheme,
+        // stateInteractionTheme,
 
         /** dispatch */
         dispatchTerminalsAddTerminal,
+        dispatchDataAddTerminalToPluriverse,
     } = properties;
 
 
@@ -89,6 +95,12 @@ const Command: React.FC<CommandProperties> = (
         };
 
         dispatchTerminalsAddTerminal(terminal);
+
+        const payload = {
+            pluriverseID,
+            terminalID,
+        };
+        dispatchDataAddTerminalToPluriverse(payload);
 
         setCommandValue('');
     }
@@ -131,6 +143,11 @@ const mapDispatchToProperties = (
         terminal,
     ) => dispatch(
         actions.terminals.addTerminal(terminal),
+    ),
+    dispatchDataAddTerminalToPluriverse: (
+        terminal,
+    ) => dispatch(
+        actions.data.addTerminalToPluriverse(terminal),
     ),
 });
 
