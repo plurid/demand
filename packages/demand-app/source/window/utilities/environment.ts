@@ -1,3 +1,7 @@
+require('dotenv').config({ path: './environment/.environment' });
+
+
+
 const MODE_ENV = process.env.MODE_ENV || '';
 
 const environments: any = {
