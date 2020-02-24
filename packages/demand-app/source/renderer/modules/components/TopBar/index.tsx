@@ -109,8 +109,8 @@ const TopBar: React.FC<TopBarProperties> = (
             mouseOver={mouseOver}
             theme={stateGeneralTheme}
         >
-            {/* {mouseOver && (
-                <> */}
+            {mouseOver && (
+                <>
                     <WindowControls />
 
                     {Object.values(statePluriverses).map(pluriverse => {
@@ -134,8 +134,8 @@ const TopBar: React.FC<TopBarProperties> = (
                             size="small"
                         />
                     </StyledTopBarAdd>
-                {/* </>
-            )} */}
+                </>
+            )}
         </StyledTopBar>
     );
 }
