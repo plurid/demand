@@ -4,6 +4,8 @@ import Root from './Root';
 
 import store from '../modules/services/state/store';
 
+import '../modules/services/utilities/devtools';
+
 
 
 const initialState = {};
