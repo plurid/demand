@@ -23,6 +23,7 @@ import {
     StyledTopBarAdd,
 } from './styled';
 
+import WindowControls from './components/WindowControls';
 import PluriverseItem from './components/PluriverseItem';
 
 import {
@@ -108,8 +109,10 @@ const TopBar: React.FC<TopBarProperties> = (
             mouseOver={mouseOver}
             theme={stateGeneralTheme}
         >
-            {mouseOver && (
-                <>
+            {/* {mouseOver && (
+                <> */}
+                    <WindowControls />
+
                     {Object.values(statePluriverses).map(pluriverse => {
                         const {
                             id,
@@ -131,8 +134,8 @@ const TopBar: React.FC<TopBarProperties> = (
                             size="small"
                         />
                     </StyledTopBarAdd>
-                </>
-            )}
+                {/* </>
+            )} */}
         </StyledTopBar>
     );
 }
