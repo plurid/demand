@@ -25,6 +25,7 @@
         "electron.windows": "yarn build && electron-packager ./build/ demand --overwrite --asar=true --platform=win32 --arch=ia32 --icon=./build/assets/meta/demand.ico --prune=true --out=demand --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"demand\""
     },
     "devDependencies": {
+        "@types/electron-devtools-installer": "^2.2.0",
         "@types/jest": "^25.1.3",
         "@types/react": "^16.9.22",
         "@types/react-dom": "^16.9.5",
