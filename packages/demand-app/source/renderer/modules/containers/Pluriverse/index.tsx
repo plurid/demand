@@ -11,8 +11,9 @@ import {
     Theme,
 } from '@plurid/plurid-themes';
 
-import PluridApp, {
-    PluridPage,
+import {
+    PluridApplication,
+    PluridPlane,
     PluridConfiguration,
     RecursivePartial,
     SPACE_LAYOUT,
@@ -86,7 +87,7 @@ const Pluriverse: React.FC<PluriverseProperties> = (
 
 
     /** state */
-    const [pluridPages, setPluridPages] = useState<PluridPage[]>([]);
+    const [pluridPages, setPluridPages] = useState<PluridPlane[]>([]);
     const [pluridView, setPluridView] = useState<string[]>([]);
     const [pluriverse, setPluriverse] = useState<TerminalPluriverse>();
 
@@ -123,7 +124,7 @@ const Pluriverse: React.FC<PluriverseProperties> = (
             return terminalPluridPage;
         });
 
-        const pluridPages: PluridPage[] = [
+        const pluridPages: PluridPlane[] = [
             {
                 id: 'command',
                 path: '/command',
@@ -162,7 +163,7 @@ const Pluriverse: React.FC<PluriverseProperties> = (
     return (
         <StyledPluriverse>
             {pluridPages.length > 0 && (
-                <PluridApp
+                <PluridApplication
                     pages={pluridPages}
                     configuration={pluridAppConfiguration}
                     view={pluridView}
