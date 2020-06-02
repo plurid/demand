@@ -18,7 +18,7 @@ function createWindow() {
     win = new BrowserWindow({
         width: 1000,
         height: 800,
-        icon: './assets/meta/demand.png',
+        // icon: './assets/meta/demand.png',
         minHeight: 500,
         minWidth: 300,
         title: 'demand',
@@ -62,7 +62,7 @@ function createWindow() {
         win = null;
     });
 
-    installExtensions();
+    // installExtensions();
 }
 
 // This method will be called when Electron has finished
