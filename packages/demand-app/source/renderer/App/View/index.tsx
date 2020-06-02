@@ -11,7 +11,7 @@ import {
 } from '@plurid/plurid-themes';
 
 import {
-    uuidv4 as uuid,
+    uuid,
 } from '@plurid/plurid-functions';
 
 import {
@@ -64,7 +64,7 @@ const View: React.FC<ViewProperties> = (
     /** effects */
     useEffect(() => {
         if (Object.values(statePluriverses).length === 0) {
-            const id = uuid();
+            const id = uuid.generate();
             const pluriverse = {
                 id,
                 terminals: [],

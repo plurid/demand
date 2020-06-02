@@ -15,7 +15,7 @@ import {
 } from '@plurid/plurid-ui-react';
 
 import {
-    uuidv4 as uuid,
+    uuid,
 } from '@plurid/plurid-functions';
 
 import {
@@ -88,7 +88,7 @@ const Command: React.FC<CommandProperties> = (
         const result = runCommand(commandValue);
         const lines = result.split('\n');
 
-        const terminalID = uuid();
+        const terminalID = uuid.generate();
         const terminal: Terminal = {
             id: terminalID,
             lines,
@@ -110,7 +110,7 @@ const Command: React.FC<CommandProperties> = (
     return (
         <StyledCommand>
             <StyledCommandMark>
-                >
+                &gt;
             </StyledCommandMark>
 
             <PluridTextline
