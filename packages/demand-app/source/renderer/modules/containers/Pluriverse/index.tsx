@@ -87,7 +87,7 @@ const Pluriverse: React.FC<PluriverseProperties> = (
 
 
     /** state */
-    const [pluridPages, setPluridPages] = useState<PluridPlane[]>([]);
+    const [pluridPlanes, setPluridPlanes] = useState<PluridPlane[]>([]);
     const [pluridView, setPluridView] = useState<string[]>([]);
     const [pluriverse, setPluriverse] = useState<TerminalPluriverse>();
 
@@ -103,17 +103,18 @@ const Pluriverse: React.FC<PluriverseProperties> = (
         stateActivePluriverse,
     ]);
 
-    /** Handle Plurid Pages and View */
+    /** Handle Plurid Planes and View */
     useEffect(() => {
         if (!pluriverse) {
             return;
         }
 
-        const terminalPluridPages = pluriverse.terminals.map(terminalID => {
-            const terminalPluridPage = {
-                id: terminalID,
+        const terminalPluridPlanes: PluridPlane[] = pluriverse.terminals.map(terminalID => {
+            const terminalPluridPlane: PluridPlane = {
+                // id: terminalID,
                 path: '/' + terminalID,
                 component: {
+                    kind: 'react',
                     element: () => (
                         <Terminal
                             id={terminalID}
@@ -121,14 +122,15 @@ const Pluriverse: React.FC<PluriverseProperties> = (
                     ),
                 },
             };
-            return terminalPluridPage;
+            return terminalPluridPlane;
         });
 
-        const pluridPages: PluridPlane[] = [
+        const pluridPlanes: PluridPlane[] = [
             {
-                id: 'command',
+                // id: 'command',
                 path: '/command',
                 component: {
+                    kind: 'react',
                     element: () => (
                         <Command
                             pluriverseID={pluriverse.id}
@@ -136,12 +138,12 @@ const Pluriverse: React.FC<PluriverseProperties> = (
                     ),
                 },
             },
-            ...terminalPluridPages,
+            ...terminalPluridPlanes,
         ];
 
-        console.log(pluridPages);
+        console.log(pluridPlanes);
 
-        setPluridPages(pluridPages);
+        setPluridPlanes(pluridPlanes);
 
         const terminalPluridView = pluriverse.terminals.map(terminalID => {
             return '/' + terminalID;
@@ -162,9 +164,9 @@ const Pluriverse: React.FC<PluriverseProperties> = (
     /** render */
     return (
         <StyledPluriverse>
-            {pluridPages.length > 0 && (
+            {pluridPlanes.length > 0 && (
                 <PluridApplication
-                    pages={pluridPages}
+                    planes={pluridPlanes}
                     configuration={pluridAppConfiguration}
                     view={pluridView}
                 />

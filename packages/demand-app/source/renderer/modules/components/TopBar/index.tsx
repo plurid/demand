@@ -15,7 +15,7 @@ import {
 } from '@plurid/plurid-icons-react';
 
 import {
-    uuidv4 as uuid,
+    uuid,
 } from '@plurid/plurid-functions';
 
 import {
@@ -93,7 +93,7 @@ const TopBar: React.FC<TopBarProperties> = (
     /** handlers */
     const addPluriverse = () =>{
         const pluriverse: TerminalPluriverse = {
-            id: uuid(),
+            id: uuid.generate(),
             terminals: [],
         };
         dispatchAddPluriverse(pluriverse);
